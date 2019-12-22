@@ -1,6 +1,6 @@
 {
   "name": "vuerd-plugin-medium-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vuerd-core plugin medium-editor",
   "main": "dist/vuerd-plugin-medium-editor.js",
   "typings": "src/types/index.d.ts",
@@ -16,16 +16,13 @@
   "license": "MIT",
   "dependencies": {
     "core-js": "^3.4.3",
-    "jquery": "^3.4.1",
     "medium-editor": "^5.23.3",
-    "medium-editor-tables": "^0.6.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
     "vuerd-core": "^0.4.5"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.31",
     "@types/medium-editor": "^5.0.3",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
