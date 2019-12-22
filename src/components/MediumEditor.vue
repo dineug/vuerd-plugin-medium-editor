@@ -5,7 +5,9 @@
 <script lang="ts">
 import "medium-editor/dist/css/medium-editor.min.css";
 import "medium-editor/dist/css/themes/default.min.css";
+import "medium-editor-tables/dist/css/medium-editor-tables.min.css";
 import Medium from "medium-editor";
+import MediumEditorTable from "medium-editor-tables";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({
@@ -43,7 +45,10 @@ export default class MediumEditor extends Vue {
     },
     autoLink: true,
     imageDragging: true,
-    placeholder: false
+    placeholder: false,
+    extensions: {
+      table: new MediumEditorTable()
+    }
   };
 
   @Watch("value")
