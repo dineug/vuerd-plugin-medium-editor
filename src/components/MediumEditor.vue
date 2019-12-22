@@ -8,6 +8,7 @@ import "medium-editor/dist/css/themes/default.min.css";
 import "medium-editor-tables/dist/css/medium-editor-tables.min.css";
 import Medium from "medium-editor";
 import MediumEditorTable from "medium-editor-tables";
+import "@/plugins/fileDragging.js";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({
@@ -17,6 +18,7 @@ export default class MediumEditor extends Vue {
   @Prop({ type: String, default: "" })
   private value!: string;
 
+  public imageUpload?: (files: File, callback: (url: string) => void) => void;
   private currentValue: string = "";
   private medium!: Medium.MediumEditor;
   private option = {
@@ -26,25 +28,27 @@ export default class MediumEditor extends Vue {
         "bold",
         "italic",
         "underline",
+        "strikethrough",
+        "subscript",
+        "superscript",
         "anchor",
         "h2",
         "h3",
+        "orderedlist",
+        "unorderedlist",
         "quote",
-        "table"
+        "table",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight"
       ],
       diffLeft: 0,
       diffTop: -10,
       firstButtonClass: "medium-editor-button-first",
       lastButtonClass: "medium-editor-button-last",
-      relativeContainer: null,
-      standardizeSelectionStart: false,
-      static: false,
-      align: "center",
-      sticky: false,
-      updateOnEmptySelection: false
+      align: "center"
     },
     autoLink: true,
-    imageDragging: true,
     placeholder: false,
     extensions: {
       table: new MediumEditorTable()

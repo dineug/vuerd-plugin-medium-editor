@@ -15,6 +15,9 @@ export default {
       }
     };
     if (option) {
+      if (typeof option.imageUpload === "function") {
+        MediumEditor.prototype.imageUpload = option.imageUpload;
+      }
       if (option.scope !== undefined) {
         editor.scope = option.scope;
       }

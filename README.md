@@ -25,8 +25,18 @@ import MediumEditor from 'vuerd-plugin-medium-editor';
 import 'vuerd-core/dist/vuerd-core.css';
 import 'vuerd-plugin-medium-editor/dist/vuerd-plugin-medium-editor.css';
 
-VuerdCore.use(MediumEditor);
-// VuerdCore.use(MediumEditor, option);
+VuerdCore.use(
+  MediumEditor,
+/*
+  {
+    imageUpload(file, callback) {
+      // upload
+      callback("URL");
+    }
+  }
+*/
+);
+
 Vue.use(VuerdCore);
 ```
 ```html
@@ -35,6 +45,7 @@ Vue.use(VuerdCore);
 ## Option interface
 ```typescript
 export interface Option {
+  imageUpload?: (file: File, callback: (url: string) => void) => void;
   scope?: string[] | RegExp[];
   exclude?: string[] | RegExp[];
 }
@@ -42,6 +53,7 @@ export interface Option {
 ## Option
 | Name | Type | Default | Describe |
 | --- | --- | --- | --- |
+| imageUpload | function | base64 | image upload |
 | scope | [String \| RegExp] | ["rich"] | file designation(string extension) |
 | exclude | [String \| RegExp] |  | exception file designation(string extension) |
 
