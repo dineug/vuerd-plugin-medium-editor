@@ -1,6 +1,6 @@
 {
   "name": "vuerd-plugin-medium-editor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "vuerd-core plugin medium-editor",
   "main": "dist/vuerd-plugin-medium-editor.common.js",
   "typings": "src/types/index.d.ts",
@@ -22,7 +22,7 @@
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
-    "vuerd-core": "^0.4.5"
+    "vuerd-core": "^0.4.9"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.31",
