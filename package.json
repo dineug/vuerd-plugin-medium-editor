@@ -1,6 +1,6 @@
 {
   "name": "vuerd-plugin-medium-editor",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "vuerd-core plugin medium-editor",
   "main": "dist/vuerd-plugin-medium-editor.common.js",
   "typings": "src/types/index.d.ts",

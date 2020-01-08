@@ -50,9 +50,5 @@ VuerdCore.use({
   }
 });
 
-VuerdCore.use(MediumEditor, {
-  imageUpload(file, callback) {
-    callback(URL.createObjectURL(file));
-  }
-});
+VuerdCore.use(MediumEditor);
 Vue.use(VuerdCore);

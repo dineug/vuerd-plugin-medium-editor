@@ -9,7 +9,25 @@ import "medium-editor-tables/dist/css/medium-editor-tables.min.css";
 import Medium from "medium-editor";
 import MediumEditorTable from "medium-editor-tables";
 import "@/plugins/fileDragging.js";
+import { EditorOption } from "@/types";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+
+const optionKeys = [
+  "delay",
+  "disableReturn",
+  "disableDoubleReturn",
+  "disableExtraSpaces",
+  "disableEditing",
+  "spellcheck",
+  "targetBlank",
+  "toolbar",
+  "anchorPreview",
+  "placeholder",
+  "anchor",
+  "paste",
+  "keyboardCommands",
+  "autoLink"
+];
 
 @Component({
   name: "MediumEditor"
@@ -21,7 +39,7 @@ export default class MediumEditor extends Vue {
   public imageUpload?: (files: File, callback: (url: string) => void) => void;
   private currentValue: string = "";
   private medium!: Medium.MediumEditor;
-  private option = {
+  private editorOption = {
     toolbar: {
       allowMultiParagraphSelection: true,
       buttons: [
@@ -53,7 +71,8 @@ export default class MediumEditor extends Vue {
     extensions: {
       table: new MediumEditorTable()
     }
-  };
+  } as any;
+  public option?: EditorOption;
 
   @Watch("value")
   private watchValue(value: string) {
@@ -69,9 +88,20 @@ export default class MediumEditor extends Vue {
     this.$emit("input", editable.innerHTML);
   }
 
+  private created() {
+    if (this.option) {
+      optionKeys.forEach(key => {
+        const option = this.option as any;
+        if (option[key] !== undefined) {
+          this.editorOption[key] = option[key];
+        }
+      });
+    }
+  }
+
   private mounted() {
     const editor = this.$refs.editor as HTMLElement;
-    this.medium = new Medium(editor, this.option as any);
+    this.medium = new Medium(editor, this.editorOption);
     this.medium.subscribe("editableInput", this.onInput);
   }
 
