@@ -39,7 +39,7 @@ export default class MediumEditor extends Vue {
   public imageUpload?: (files: File, callback: (url: string) => void) => void;
   private currentValue: string = "";
   private medium!: Medium.MediumEditor;
-  private editorOption = {
+  private editorOption: any = {
     toolbar: {
       allowMultiParagraphSelection: true,
       buttons: [
@@ -71,7 +71,7 @@ export default class MediumEditor extends Vue {
     extensions: {
       table: new MediumEditorTable()
     }
-  } as any;
+  };
   public option?: EditorOption;
 
   @Watch("value")
